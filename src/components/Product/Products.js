@@ -2,7 +2,7 @@
 import React from 'react';
 import { Grid, CircularProgress, makeStyles } from '@material-ui/core';
 import { useSelector } from 'react-redux';
-import ProductItem from './Product/ProductItem.js';
+import ProductItem from './ProductItem.js';
 
 const useStyles = makeStyles (theme => ({
     item : {
@@ -13,8 +13,6 @@ const useStyles = makeStyles (theme => ({
 }))
 
 const Products = () => {
-
-    
     const classes = useStyles();
     const products = useSelector((state) => state.products);
     console.log(products);

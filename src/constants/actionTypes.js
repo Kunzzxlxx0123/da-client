@@ -3,3 +3,6 @@ export const CREATE_PRODUCT = 'CREATE_PRODUCT';
 export const GET_PRODUCT = 'GET_PRODUCT';
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export const GET_TREE_CATEGORIES = 'GET_TREE_CATEGORIES';
+export const USER_LOGIN = "USER_LOGIN";
+export const CURRENT_USER = "CURRENT_USER";
+export const USER_LOGOUT = "USER_LOGOUT";

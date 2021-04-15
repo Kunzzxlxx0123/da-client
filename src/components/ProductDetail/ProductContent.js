@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import { Backdrop, Box, Button, Card, CardMedia, CircularProgress, Divider, Fade, FormControl, Grid, IconButton, Input, InputAdornment, InputLabel, List, ListItem, ListItemIcon, ListItemText, makeStyles, Modal, OutlinedInput, Paper, TextField, Typography } from '@material-ui/core';
-import zIndex from '@material-ui/core/styles/zIndex';
 import { Send, TextFields, Visibility, VisibilityOff } from '@material-ui/icons';
 import { Rating } from '@material-ui/lab';
 import React, { useState } from 'react';

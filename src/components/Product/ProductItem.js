@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography, CardHeader, Avatar, IconButton, Tooltip } from '@material-ui/core/';
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
-import DeleteIcon from '@material-ui/icons/Delete';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
-import itemImage from '../../../../image/item.jpg';
 import { makeStyles } from '@material-ui/core/styles';
-import Collapse from '@material-ui/core/Collapse';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import clsx from 'clsx';
 import { Info } from '@material-ui/icons';
 import { Link } from 'react-router-dom';

@@ -161,25 +161,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TopBar() {
+export default function CustomDrawer() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState({open: false});
   const [appBar, setAppBar] = useState(`${classes.appBar}`);
-
+  
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getTreeCategories());
-    window.addEventListener("scroll", handleScroll);
-  }, [])
-
   const treeCategories = useSelector((state) => state.categories);
-  console.log(treeCategories);
   const handleScroll = () => {
     if(window.scrollY >= 457){
       setAppBar(`${classes.appBarScroll}`);
@@ -187,6 +179,10 @@ export default function TopBar() {
       setAppBar(`${classes.appBar}`);
     }
   }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, [])
 
 
   const toggleDrawer = (open) => (event) => {
@@ -223,7 +219,6 @@ export default function TopBar() {
         childs = getTreeItemsFromData(treeItemData.childs);
       }
       return (
-          
           <div className={classes.rootItem}>
             <TreeItem 
                     key={treeItemData.id}
@@ -324,6 +319,7 @@ export default function TopBar() {
 
   return (
     <div className={classes.grow}>
+
       <AppBar id="appBar" position="fixed" className={appBar}>
         <Toolbar>
           <IconButton

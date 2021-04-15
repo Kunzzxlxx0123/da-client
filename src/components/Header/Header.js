@@ -1,18 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import TopBar from './TopBar.js';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import { Grid } from '@material-ui/core';
+import CustomDrawer from './CustomDrawer';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTreeCategories } from '../../actions/categories';
 
 const drawerWidth = 200;
 
@@ -60,17 +53,43 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ClippedDrawer() {
+export default function Header() {
     const classes = useStyles();
+
+    let windowScrollTop;
+    if (window.innerWidth >= 768) {
+        windowScrollTop = window.pageYOffset / 3;
+    } else {
+        windowScrollTop = 0;
+    }
+    const [transform, setTransform] = useState("translate3d(0," + windowScrollTop + "px,0)");
+    const dispatch = useDispatch();
+    React.useEffect(() => {
+        if (window.innerWidth >= 768) {
+            window.addEventListener("scroll", resetTransform);
+        }
+        return function cleanup() {
+            if (window.innerWidth >= 768) {
+                window.removeEventListener("scroll", resetTransform);
+            }
+        };
+    }, []);
+    const resetTransform = () => {
+        var windowScrollTop = window.pageYOffset / 3;
+        setTransform("translate3d(0," + windowScrollTop + "px,0)");
+    };
     return (
         <div>
             <CssBaseline />
-            <TopBar />
-            <div className={classes.pageHeader} style={{ backgroundImage: `url(https://2.pik.vn/2021b5f3b2fb-6840-46f9-a3d0-076fb79e78fc.jpg)` }}>
+            <CustomDrawer />
+            <div className={classes.pageHeader} style={{
+                backgroundImage: `url(https://2.pik.vn/2021b5f3b2fb-6840-46f9-a3d0-076fb79e78fc.jpg)`,
+                transform: transform
+            }}>
                 <div className={classes.contentHeader}>
                     <Grid container justify="center" alignItems="center">
                         <Grid item>
-                            <Typography variant="h1" component="h2" style={{textAlign: 'center'}}>Nova-Computer</Typography>
+                            <Typography variant="h1" component="h2" style={{ textAlign: 'center' }}>Nova-Computer</Typography>
                         </Grid>
                     </Grid>
                 </div>

@@ -1,14 +1,11 @@
 import { Button, Checkbox, CircularProgress, FormControlLabel, FormLabel, Grid, makeStyles, Paper, Radio, RadioGroup, Slider, Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { matchPath } from 'react-router';
-import ClippedDrawer from '../../fragment/Header';
-import backgroundImg from "../../../image/bg2.jpg";
-import Footer from '../../fragment/Footer';
 import { useDispatch, useSelector } from 'react-redux';
-import { findById } from '../../../actions/products';
-import Carousel from "react-material-ui-carousel";
-import ShileShow from '../../fragment/Slideshow';
-import ProductDetailContent from '../products/productDetails';
+import { findById } from '../actions/products.js';
+import ProductDetailContent from '../components/ProductDetail/ProductContent.js';
+import Footer from '../components/Footer/Footer';
+import Header from '../components/Header/Header';
+
 
 const useStyles = makeStyles(theme => ({
     content: {
@@ -87,7 +84,7 @@ const ProductDetail = (props) => {
 
     return (
         <div>
-            <ClippedDrawer />
+            <Header />
             <div className={classes.content}>
                 {
                     product.length ? (

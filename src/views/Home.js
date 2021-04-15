@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { AppBar, Container, Grid, Grow, makeStyles, Toolbar, Typography } from '@material-ui/core';
-import ClippedDrawer from '../../fragment/Header.js';
-import { useDispatch } from 'react-redux';
-import { getProducts } from '../../../actions/products.js';
-import Products from '../products/Products.js';
-import backgroundImg from '../../../image/bg2.jpg';
-import Footer from '../../fragment/Footer.js';
 
+import { useDispatch } from 'react-redux';
+import { getProducts } from '../actions/products.js';
+import Products from '../components/Product/Products.js';
+import Header from '../components/Header/Header.js';
+import { getTreeCategories } from '../actions/categories.js';
+import Footer from '../components/Footer/Footer.js';
 const useStyles = makeStyles((theme) => ({
     content: {
         margin: '-60px 30px 0px',
@@ -47,8 +47,8 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '-4%',
         marginLeft: '20px',
         borderRadius: '3px',
-        width:'fit-content',
-        background:'#F44336',
+        width: 'fit-content',
+        background: '#F44336',
         padding: '5px',
     },
     group: {
@@ -66,36 +66,40 @@ function Home() {
 
     useEffect(() => {
         dispatch(getProducts());
+        dispatch(getTreeCategories());
     }, []);
 
+    useEffect(() => {
+       
+    }, [])
     
 
     return (
         <div>
-            <ClippedDrawer />
-           
-            <div className={classes.content}>
-                    <div className={classes.group}>
-                        <AppBar position={'static'} className={classes.navBarGroup}>
-                            <Typography variant="h6">Nhóm sản phẩm số 1</Typography>
-                        </AppBar>
-                        <Grow in>
-                            <Grid className={classes.itemContainer}>
-                                <Products />
-                            </Grid>
-                        </Grow>
-                    </div>
 
-                    <div className={classes.group}>
-                        <AppBar position={'static'} className={classes.navBarGroup}>
-                            <Typography variant="h6">Nhóm sản phẩm số 2</Typography>
-                        </AppBar>
-                        <Grow in>
-                            <Grid className={classes.itemContainer}>
-                                <Products />
-                            </Grid>
-                        </Grow>
-                    </div>
+            <Header />
+            <div className={classes.content}>
+                <div className={classes.group}>
+                    <AppBar position={'static'} className={classes.navBarGroup}>
+                        <Typography variant="h6">Nhóm sản phẩm số 1</Typography>
+                    </AppBar>
+                    <Grow in>
+                        <Grid className={classes.itemContainer}>
+                            <Products />
+                        </Grid>
+                    </Grow>
+                </div>
+
+                <div className={classes.group}>
+                    <AppBar position={'static'} className={classes.navBarGroup}>
+                        <Typography variant="h6">Nhóm sản phẩm số 2</Typography>
+                    </AppBar>
+                    <Grow in>
+                        <Grid className={classes.itemContainer}>
+                            <Products />
+                        </Grid>
+                    </Grow>
+                </div>
             </div>
 
             <Footer />
