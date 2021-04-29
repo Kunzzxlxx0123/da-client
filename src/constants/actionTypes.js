@@ -6,3 +6,5 @@ export const GET_TREE_CATEGORIES = 'GET_TREE_CATEGORIES';
 export const USER_LOGIN = "USER_LOGIN";
 export const CURRENT_USER = "CURRENT_USER";
 export const USER_LOGOUT = "USER_LOGOUT";
+export const OAUTH2_LOGIN = "OAUTH2_LOGIN";
+export const LOGIN_FAILED = "LOGIN_FAILED";

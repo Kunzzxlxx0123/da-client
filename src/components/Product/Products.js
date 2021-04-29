@@ -15,6 +15,7 @@ const useStyles = makeStyles (theme => ({
 const Products = () => {
     const classes = useStyles();
     const products = useSelector((state) => state.products);
+    
     console.log(products);
     return (
         !products.length ? <CircularProgress /> : (

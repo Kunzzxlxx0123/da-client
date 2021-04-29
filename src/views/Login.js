@@ -31,14 +31,14 @@ class Login extends Component {
             return <Redirect
                 to={{
                 pathname: "/",
-                state: { from: this.props.location }
+                state: { from: this.props.path }
             }}/>;            
         }
 
         return (
             <div className="login-container">
                 <div className="login-content">
-                    <h1 className="login-title">Login to SpringSocial</h1>
+                    <h1 className="login-title">Login to Nova Computer</h1>
                     <SocialLogin {...this.props}/>
                     <div className="or-separator">
                         <span className="or-text">OR</span>
@@ -54,18 +54,26 @@ class Login extends Component {
 
 class SocialLogin extends Component {
 
-    
-    
-    
-    componentDidMount(){
-        console.log(this.props.location.state.from.pathname);
-        console.log(`${window.location.origin}${this.props.location.state.from.pathname}`)
-        console.log(this.props.history.location);
+    constructor(props){
+
+        super(props);
+        console.log(this.props);
+        this.state = {
+            redirectURI : this.props.location.state ? this.props.location.state : '',
+        }
     }
+
+    componentDidMount(){
+        console.log(`${GOOGLE_AUTH_URL}?path=${this.state.redirectURI}`);
+        console.log(`${GOOGLE_AUTH_URL}`);
+        console.log(this.state.redirectURI);
+        
+    }
+    
     render() {
         return (
             <div className="social-login">
-                <a className="btn btn-block social-btn google" href={GOOGLE_AUTH_URL}>
+                <a className="btn btn-block social-btn google" href={`${GOOGLE_AUTH_URL}?path=${this.state.redirectURI}`}>
                     <img src={googleLogo} alt="Google" /> Log in with Google</a>
                 <a className="btn btn-block social-btn facebook" href={FACEBOOK_AUTH_URL}>
                     <img src={fbLogo} alt="Facebook" /> Log in with Facebook</a>

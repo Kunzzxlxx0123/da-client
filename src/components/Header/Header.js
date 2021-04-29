@@ -6,7 +6,7 @@ import { Grid } from '@material-ui/core';
 import CustomDrawer from './CustomDrawer';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTreeCategories } from '../../actions/categories';
-
+import bg2 from '../../image/bg2.jpg';
 const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
@@ -83,7 +83,7 @@ export default function Header() {
             <CssBaseline />
             <CustomDrawer />
             <div className={classes.pageHeader} style={{
-                backgroundImage: `url(https://2.pik.vn/2021b5f3b2fb-6840-46f9-a3d0-076fb79e78fc.jpg)`,
+                backgroundImage: `url(${bg2})`,
                 transform: transform
             }}>
                 <div className={classes.contentHeader}>

@@ -1,10 +1,10 @@
 import axios from "axios";
-import { baseUrl } from "../constants/key";
+import { ACCESS_TOKEN, baseUrl } from "../constants/key";
 
 
 
-export function getCurrentUser() {
-    return localStorage.getItem("token");
+export default function getToken() {
+    return localStorage.getItem(ACCESS_TOKEN);
 }
 
 export function login(loginRequest) {

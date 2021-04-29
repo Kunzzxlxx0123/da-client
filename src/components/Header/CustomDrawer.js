@@ -387,7 +387,7 @@ export default function CustomDrawer() {
       {renderMenu}
       <SwipeableDrawer
             anchor={"left"}
-            open={open['open']}
+            open={open['open']} 
             onClose={toggleDrawer(false)}
             onOpen={toggleDrawer(true)}
             className={classes.drawer}

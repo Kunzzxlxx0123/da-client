@@ -1,16 +1,34 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import { makeStyles } from '@material-ui/core';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getProducts } from '../actions/products';
+import ContentAdmin from '../components/DasBoard/Content';
+import HeaderAdmin from '../components/DasBoard/Header';
 
-export default function DashBoard () {
 
-    const user = useSelector(state => state.user);
+const useStlyes = makeStyles(theme => ({
+    root: {
+        display: 'flex',
+    },
+}))
 
-    const loading 
+const DashBoard = (props) => {
+
+    const dispatch = useDispatch();
+    useEffect( () => {
+        dispatch(getProducts());
+    })
+    const classes = useStlyes();
     
     return (
-        <div>
-            <h1>Private route</h1>
+        <div className={classes.root}>
+            <HeaderAdmin />
+            <ContentAdmin />
+
+        {/* <!-- Custom scripts for all pages--> */}
         </div>
     )
 
 }
+
+export default DashBoard;
